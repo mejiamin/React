@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hello React</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="js/data.js"></script>
+</head>
+
+<body>
+    <!-- index.html -->
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // <!--
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App cardData={cardData} />);
+
+        function App({ cardData }) {
+
+            const formattedPrice = `${cardData.price.toLocaleString()} ₽/час`;
+            const featuresList = cardData.features.map((feature) => (
+                <li className="feature">{feature}</li>
+            ));
+
+
+            return (
+                <section className="rent">
+                    <ul className="cards">
+                        <li className="card">
+                            <img className="card-img"
+                                src={cardData.img}
+                                width="280" height="140"
+                                alt="Белая двухпалубная яхта" />
+                            <div className="card-content">
+                                <h3 className="card-title">{cardData.name}</h3>
+                                <p className="card-description">{cardData.description}</p>
+                                <ul className="card-features">
+                                    {featuresList}
+                                </ul>
+                            </div>
+                            <p className="card-price">
+                                <span className="card-price-name">Цена:</span>
+                                <span className="card-price-value">{cardData.formattedPrice}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+            );
+        }
+    // -->
+    </script>
+</body>
+
+</html>
