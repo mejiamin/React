@@ -20,41 +20,46 @@
         // <!--
         const container = document.getElementById('root');
         const root = ReactDOM.createRoot(container);
-        root.render(<App cardData={cardData} />);
+        root.render(<App cards={cards} />);
 
-        function App({ cardData }) {
-
-            const formattedPrice = `${cardData.price.toLocaleString()} ₽/час`;
+        function Card({ cardData }) {
             const featuresList = cardData.features.map((feature) => (
-                <li className="feature">{feature}</li>
+                <li>{feature}</li>
             ));
+            const formattedPrice = `${cardData.price.toLocaleString()} ₽/час`;
 
+            return (
+                <li className="card">
+                    <img className="card-img" src={cardData.img} width="280" height="140" alt="Белая двухпалубная яхта" />
+                    <div className="card-content">
+                        <h3 className="card-title">{cardData.name}</h3>
+                        <p className="card-description">{cardData.description}</p>
+                        <ul className="card-features">
+                            {featuresList}
+                        </ul>
+                    </div>
+                    <p className="card-price">
+                        <span className="card-price-name">Цена:</span>
+                        <span className="card-price-value">{formattedPrice}</span>
+                    </p>
+                </li>
+            );
+        }
 
+        function App({ cards }) {
+            // Передайте в карточки новые данные из массива
+            const [firstCardData, secondCardData] = cards;
             return (
                 <section className="rent">
                     <ul className="cards">
-                        <li className="card">
-                            <img className="card-img"
-                                src={cardData.img}
-                                width="280" height="140"
-                                alt="Белая двухпалубная яхта" />
-                            <div className="card-content">
-                                <h3 className="card-title">{cardData.name}</h3>
-                                <p className="card-description">{cardData.description}</p>
-                                <ul className="card-features">
-                                    {featuresList}
-                                </ul>
-                            </div>
-                            <p className="card-price">
-                                <span className="card-price-name">Цена:</span>
-                                <span className="card-price-value">{cardData.formattedPrice}</span>
-                            </p>
-                        </li>
+                        {cards.map((item) => (
+                            <Card cardData={item} key={item.id} />
+                        ))}
                     </ul>
                 </section>
             );
         }
-    // -->
+        // -->
     </script>
 </body>
 
