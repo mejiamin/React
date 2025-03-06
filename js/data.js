@@ -1,3 +1,7 @@
+// data.js
+
+const topSellers = ['2', '3'];
+
 const cards = [
     {
         id: '1',
@@ -50,3 +54,4 @@ const cards = [
 ];
 
 window.cards = cards;
+window.topSellers = topSellers;

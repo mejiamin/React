@@ -20,16 +20,48 @@
         // <!--
         const container = document.getElementById('root');
         const root = ReactDOM.createRoot(container);
-        root.render(<App cards={cards} />);
+        root.render(<App cards={cards} topSellers={topSellers} />);
 
-        function Card({ cardData }) {
+        function App({ cards, topSellers }) {
+            const isShownByGrid = false;    // ---
+            const listClassName = `cards ${isShownByGrid ? '' : 'list'}`    // ---
+            return (
+                <section className="rent">
+                    <RentHeader isShownByGrid={isShownByGrid} />
+                    <ul className={listClassName}>
+                        {cards.map((item) => (
+                            <Card cardData={item} isTopSeller={topSellers.includes(item.id)} key={item.id}
+                            />
+                        ))}
+                    </ul>
+                </section>
+            );
+        }
+
+        function RentHeader({isShownByGrid}) {
+            return (
+                <header>
+                    <h2>Аренда яхты</h2>
+                    <ul class="card-view-buttons">
+                        <li class="card-view-item">
+                            <button class={`card-view-button-grid ${isShownByGrid ? 'active' : ''}`} type="button"></button>
+                        </li>
+                        <li class="card-view-item">
+                            <button class={`card-view-button-list ${!isShownByGrid ? 'active' : ''}`} type="button"></button>
+                        </li>
+                    </ul>
+                </header>
+            );
+        }
+
+        function Card({ cardData, isTopSeller }) {
             const featuresList = cardData.features.map((feature) => (
                 <li>{feature}</li>
             ));
             const formattedPrice = `${cardData.price.toLocaleString()} ₽/час`;
 
             return (
-                <li className="card">
+                <li className={`card ${isTopSeller ? 'card-top-seller' : ''}`}>
                     <img className="card-img" src={cardData.img} width="280" height="140" alt="Белая двухпалубная яхта" />
                     <div className="card-content">
                         <h3 className="card-title">{cardData.name}</h3>
@@ -43,20 +75,6 @@
                         <span className="card-price-value">{formattedPrice}</span>
                     </p>
                 </li>
-            );
-        }
-
-        function App({ cards }) {
-            // Передайте в карточки новые данные из массива
-            const [firstCardData, secondCardData] = cards;
-            return (
-                <section className="rent">
-                    <ul className="cards">
-                        {cards.map((item) => (
-                            <Card cardData={item} key={item.id} />
-                        ))}
-                    </ul>
-                </section>
             );
         }
         // -->
