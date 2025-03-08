@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Hello React</title>
+    <title>Pics to words. Игра для изучения иностранных языков</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
@@ -12,72 +12,54 @@
 </head>
 
 <body>
-    <!-- index.html -->
+    <!-- index.html Learned -->
 
     <div id="root"></div>
-
     <script type="text/babel">
-        // <!--
         const container = document.getElementById('root');
         const root = ReactDOM.createRoot(container);
-        root.render(<App cards={cards} topSellers={topSellers} />);
+        root.render(<App words={words} selectedItems={selectedItems} finishedItems={finishedItems} />);
 
-        function App({ cards, topSellers }) {
-            const isShownByGrid = false;    // ---
-            const listClassName = `cards ${isShownByGrid ? '' : 'list'}`    // ---
+        function App({ words = [], selectedItems = [], finishedItems = [] }) {
             return (
-                <section className="rent">
-                    <RentHeader isShownByGrid={isShownByGrid} />
-                    <ul className={listClassName}>
-                        {cards.map((item) => (
-                            <Card cardData={item} isTopSeller={topSellers.includes(item.id)} key={item.id}
-                            />
-                        ))}
-                    </ul>
+                <section className="game">
+                    <Grid words={words} selectedItems={selectedItems} finishedItems={finishedItems} />
                 </section>
             );
         }
 
-        function RentHeader({isShownByGrid}) {
+        function Grid({ words, selectedItems, finishedItems }) {
+            const cards = words.map((item) => (
+                <Card
+                    key={item.id}
+                    type={item.type}
+                    url={item.url}
+                    text={item.word}
+                    isSelected={selectedItems.includes(item.id)}
+                    isFinished={finishedItems.includes(item.id)}
+                />
+            ));
             return (
-                <header>
-                    <h2>Аренда яхты</h2>
-                    <ul class="card-view-buttons">
-                        <li class="card-view-item">
-                            <button class={`card-view-button-grid ${isShownByGrid ? 'active' : ''}`} type="button"></button>
-                        </li>
-                        <li class="card-view-item">
-                            <button class={`card-view-button-list ${!isShownByGrid ? 'active' : ''}`} type="button"></button>
-                        </li>
-                    </ul>
-                </header>
+                <ul className="cards">
+                    {cards}
+                </ul>
             );
         }
 
-        function Card({ cardData, isTopSeller }) {
-            const featuresList = cardData.features.map((feature) => (
-                <li>{feature}</li>
-            ));
-            const formattedPrice = `${cardData.price.toLocaleString()} ₽/час`;
+        function Card({ url, text, type, isSelected = false, isFinished = true }) {
+            const content = type === 'image'
+                ? <img src={url} width="185" height="100" alt="" />
+                : <span>{text}</span>;
 
+            const className = `card ${isSelected ? 'selected' : ''
+                } ${isFinished ? 'disabled' : ''
+                }`;
             return (
-                <li className={`card ${isTopSeller ? 'card-top-seller' : ''}`}>
-                    <img className="card-img" src={cardData.img} width="280" height="140" alt="Белая двухпалубная яхта" />
-                    <div className="card-content">
-                        <h3 className="card-title">{cardData.name}</h3>
-                        <p className="card-description">{cardData.description}</p>
-                        <ul className="card-features">
-                            {featuresList}
-                        </ul>
-                    </div>
-                    <p className="card-price">
-                        <span className="card-price-name">Цена:</span>
-                        <span className="card-price-value">{formattedPrice}</span>
-                    </p>
+                <li className={className}>
+                    {content}
                 </li>
             );
         }
-        // -->
     </script>
 </body>
 

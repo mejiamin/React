@@ -1,57 +1,83 @@
 // data.js
 
-const topSellers = ['2', '3'];
-
-const cards = [
+const words = [
     {
         id: '1',
-        name: 'Катер Meridian 401',
-        description: 'Яхта 401 длиной 12.5 метров и шириной 4.2 метра',
-        img: 'img/photo-card-1.jpg',
-        price: 14000,
-        features: [
-            '2 каюты',
-            '4 спальных места',
-            'аудиосистема, кондиционер',
-        ],
+        token: 'house',
+        word: 'Сasa',
+        type: 'word'
     },
     {
         id: '2',
-        name: 'Катер 60 Manhattan',
-        description: 'Двухпалубное судно VIP уровня длиной 20 метров',
-        img: 'img/photo-card-2.jpg',
-        price: 25000,
-        features: [
-            '6 кают',
-            'оборудованная кухня',
-            'джакузи',
-        ],
+        token: 'house',
+        url: 'img/photo-card-4.jpg',
+        type: 'image'
     },
     {
         id: '3',
-        name: 'Катер Starfisher 34',
-        description: 'Моторная яхта длиной 11 метров и вместимостью до 8 человек',
-        img: 'img/photo-card-3.jpg',
-        price: 18000,
-        features: [
-            '4 каюты',
-            '6 спальных мест',
-            'аудиосистема, кондиционер',
-        ],
+        token: 'dog',
+        word: 'Сane',
+        type: 'word'
     },
     {
         id: '4',
-        name: 'Катер Atlantic 3000',
-        description: 'Катер Atlantic длиной 14 метров и вместимостью до 6 человек',
-        img: 'img/photo-card-4.jpg',
-        price: 15000,
-        features: [
-            '2 каюты',
-            '4 спальных места',
-            'оборудованная кухня',
-        ],
+        token: 'dog',
+        url: 'img/photo-card-6.jpg',
+        type: 'image'
     },
+    {
+        id: '5',
+        token: 'teapot',
+        word: 'Teiera',
+        type: 'word'
+    },
+    {
+        id: '6',
+        token: 'teapot',
+        url: 'img/photo-card-5.jpg',
+        type: 'image'
+    },
+    {
+        id: '7',
+        token: 'bed',
+        word: 'Letto',
+        type: 'word'
+    },
+    {
+        id: '8',
+        token: 'bed',
+        url: 'img/photo-card-2.jpg',
+        type: 'image'
+    },
+    {
+        id: '9',
+        token: 'headphone',
+        word: 'Cuffia',
+        type: 'word'
+    },
+    {
+        id: '10',
+        token: 'headphone',
+        url: 'img/photo-card-1.jpg',
+        type: 'image'
+    },
+    {
+        id: '11',
+        token: 'laptop',
+        word: 'Portatile',
+        type: 'word'
+    },
+    {
+        id: '12',
+        token: 'laptop',
+        url: 'img/photo-card-3.jpg',
+        type: 'image'
+    }
 ];
 
-window.cards = cards;
-window.topSellers = topSellers;
+const selectedItems = ['3', '4'];
+const finishedItems = ['11', '12'];
+
+window.words = words;
+window.selectedItems = selectedItems;
+window.finishedItems = finishedItems;
