@@ -12,54 +12,19 @@
 </head>
 
 <body>
-    <!-- index.html Learned -->
+    <!-- index.html -->
 
     <div id="root"></div>
+    
     <script type="text/babel">
-        const container = document.getElementById('root');
-        const root = ReactDOM.createRoot(container);
-        root.render(<App words={words} selectedItems={selectedItems} finishedItems={finishedItems} />);
-
-        function App({ words = [], selectedItems = [], finishedItems = [] }) {
+        function setDate (props) {
+            const computedDate = props.date ? props.date : '20.02.98'
             return (
-                <section className="game">
-                    <Grid words={words} selectedItems={selectedItems} finishedItems={finishedItems} />
-                </section>
-            );
+                <h1>hello, i was born {computedDate}</h1>
+            )
         }
-
-        function Grid({ words, selectedItems, finishedItems }) {
-            const cards = words.map((item) => (
-                <Card
-                    key={item.id}
-                    type={item.type}
-                    url={item.url}
-                    text={item.word}
-                    isSelected={selectedItems.includes(item.id)}
-                    isFinished={finishedItems.includes(item.id)}
-                />
-            ));
-            return (
-                <ul className="cards">
-                    {cards}
-                </ul>
-            );
-        }
-
-        function Card({ url, text, type, isSelected = false, isFinished = true }) {
-            const content = type === 'image'
-                ? <img src={url} width="185" height="100" alt="" />
-                : <span>{text}</span>;
-
-            const className = `card ${isSelected ? 'selected' : ''
-                } ${isFinished ? 'disabled' : ''
-                }`;
-            return (
-                <li className={className}>
-                    {content}
-                </li>
-            );
-        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(setDate({date: '03.01.2002'}));
     </script>
 </body>
 
