@@ -15,17 +15,8 @@
     <!-- index.html -->
 
     <div id="root"></div>
-    
-    <script type="text/babel">
-        function setDate (props) {
-            const computedDate = props.date ? props.date : '20.02.98'
-            return (
-                <h1>hello, i was born {computedDate}</h1>
-            )
-        }
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(setDate({date: '03.01.2002'}));
-    </script>
+
+    <script type="text/babel" src="js/script.js"></script>
 </body>
 
 </html>
