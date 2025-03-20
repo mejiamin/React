@@ -1,2 +1,15 @@
 /* style.css */
 
+body {
+    background-color: #ccc;
+}
+
+.open {
+    display: inline-block;
+    font-size: 50px;
+    border: 1px solid red;
+}
+
+.grey {
+    background-color: #555;
+}
