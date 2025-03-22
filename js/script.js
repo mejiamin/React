@@ -91,13 +91,38 @@
 
 
 
-const Button = (props) => {
-    return <button {...props}>Нажми на меня!</button>
-}
+// const Button = (props) => {
+//     return <button {...props}>Нажми на меня!</button>;
+// };
 
-const App = () => {
-    return <Button className="btn btn-pripary" onClick={() => console.log("Нажали!")} />
-}
+// const App = () => {
+//     return <Button className="btn btn-primary" onClick={() => console.log("Нажали!")} />;
+// };
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(App());
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<App />);
+
+
+
+
+// const List = ({title, items, ...rest}) => {
+//     return (
+//         <div {...rest}>
+//             <h1>{title}</h1>
+//             <ul>
+//                 {items.map((item, index) => (
+//                     <li key={index}>{item}</li>
+//                 ))}
+//             </ul>
+//         </div>
+//     );
+// };
+
+// const App = () => {
+//     const items = ['Проснуться', 'Умыться', 'Позавтракать'];
+//     return <List title="Список дел на день" items={items} className="list" />
+// };
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<App />)

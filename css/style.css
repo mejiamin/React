@@ -13,3 +13,25 @@ body {
 .grey {
     background-color: #555;
 }
+
+.btn {
+    padding: 15px;
+    background-color: #555;
+    color: #ccc;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    position: relative;
+    top: 90px;
+    left: 50%;
+    border-radius: 10px;
+    transform: translate(-50%);
+}
+
+.list {
+    padding: 0 0 20px 100px;
+    border: 10px solid #777;
+    border-radius: 25px;
+}
